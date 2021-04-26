@@ -6,8 +6,24 @@ const wordDisplay = document.querySelector(".word-display"),
 let score = 0,
     TIME = 3, time = TIME;
 let isPlaying = false;
+let words=[];
 
-buttonChange("게임시작");
+function getWords(){
+    axios.get('https://random-word-api.herokuapp.com/word?number=100')
+        .then(function (response) {
+            //words = response.data; 
+            response.data.array.forEach(word => {
+                if(word.length<11){
+                    words.push(word);
+                }
+                console.log(words);
+            });
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+        buttonChange("게임시작");
+}
 
 function buttonChange(text) {
     button.innerText = text;
@@ -31,8 +47,10 @@ function run() { //버튼 클릭 후 기능.
     if(isPlaying===true){
         return;
     }
-
+    
     isPlaying=true;
+    score=0;
+    scoreDisplay.innerText=score;
     buttonChange("게임중");
     time = TIME;
     timeInterval = setInterval(countDown, 1000);
@@ -42,8 +60,14 @@ function run() { //버튼 클릭 후 기능.
 
 
 function compare_word() { //단어 비교 및 score, time설정
+    
+    
     if (wordDisplay.innerText.toLowerCase() === wordInput.value.toLowerCase()) {
         wordInput.value = "";
+        if(isPlaying===false){
+            return;
+        }
+
         score += 5;
         scoreDisplay.innerText = score;
         time = TIME;
