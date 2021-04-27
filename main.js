@@ -3,7 +3,6 @@ const wordDisplay = document.querySelector(".word-display"),
     timeDisplay = document.querySelector(".time"),
     scoreDisplay = document.querySelector(".score"),
     button = document.querySelector(".button");
-    a=document.querySelector(".a");
 
     
 let score = 0,
