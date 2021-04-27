@@ -51,7 +51,7 @@ function run() { //버튼 클릭 후 기능.
     if (isPlaying === true) {
         return;
     }
-
+    wordInput.value="";
     isPlaying = true;
     score = 0;
     scoreDisplay.innerText = score;
@@ -59,7 +59,7 @@ function run() { //버튼 클릭 후 기능.
     time = TIME;
     timeInterval = setInterval(countDown, 1000);
 
-
+   
 
 
 }

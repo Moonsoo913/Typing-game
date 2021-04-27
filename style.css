@@ -55,3 +55,9 @@ body{
     background:white;
     cursor:not-allowed;
 }
+
+.weather{
+    margin:1rem;
+    text-align:center;
+    color: grey;
+}
