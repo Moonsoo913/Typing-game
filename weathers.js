@@ -1,6 +1,8 @@
 const weather = document.querySelector(".weathers")
 
-
+function saveCoords(coordsObj){
+    localStorage.setItem(COORDS,JSON.stringify(coordsObj));
+}
 
 function handleGeoSuccess(position){
     const latitude=position.coords.latitude,
@@ -11,7 +13,8 @@ function handleGeoSuccess(position){
         longitude
     };
     
-
+    saveCoords(coordsObj);
+    
 
 }
 
